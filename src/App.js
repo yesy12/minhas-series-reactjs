@@ -1,8 +1,10 @@
-import React from 'react';
-import Header from './Header'
+import React,{ useState,useEffect } from 'react';
+import Header from './Header';
 import {
   BrowserRouter as Router, Route
-}from 'react-router-dom'
+}from 'react-router-dom';
+import axios from 'axios';
+
 
 const Home = () => {
   return <h1> Home </h1>
@@ -13,12 +15,22 @@ const Genres = () =>{
 }
 
 function App() {
+  var link = "https://my-series-list.herokuapp.com"
+  useEffect(() =>{
+    axios.get("/api").then( res =>{
+      console.log(res.data)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  },[])
+
   return (
     <Router>
       <div className="App">
         <Header />
         <Route path="/" exact component={Home}/>
-        <Route path="/generos" component={Genres}/>
+        <Route path="/generos" exact component={Genres}/>
       </div>
     </Router>
   );
