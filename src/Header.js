@@ -3,6 +3,7 @@ import {
 	Navbar, NavbarBrand, Collapse,
 	Nav, NavItem, NavLink, NavbarToggler
 } from 'reactstrap'
+import {Link } from 'react-router-dom';
 
 const Header = () => {
 	const [open,setOpen ] = useState(false);
@@ -13,12 +14,12 @@ const Header = () => {
 
 	return(
 		<Navbar color="light" light expand="md"> 
-			<NavbarBrand> Minhas Séries </NavbarBrand>
+			<NavbarBrand tag={Link} to="/"> Minhas Séries </NavbarBrand>
 			<NavbarToggler onClick={isOpen}/>
 			<Collapse isOpen={open} navbar>
 					<Nav className="ml-auto" navbar>
 							<NavItem> 
-								<NavLink href="/generos"> Genêros </NavLink>
+								<NavLink tag={Link} to="/generos"> Genêros </NavLink>
 							</NavItem>
 					</Nav>	
 			</Collapse>
