@@ -1,18 +1,42 @@
 import React,{useState} from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom'
 
-const newGenres = () =>{
-    return(
+const NewGenres = () => {
+    const [name,setName] = useState('')
+    const [success,setSuccess] = useState(false)
+
+    const onChangeName = (evento) =>{
+        setName(evento.target.value)
+    }
+
+    const save = () => {
+        axios.post("/api/genres",{
+            name:name
+        })
+        .then( (res) =>  {
+            setSuccess(true)
+        })
+        .catch( (error) =>{
+            console.log(error)
+        })
+    }
+
+    if( success) {
+        console.log(success)
+    }
+
+    return (
         <div className="container">
             <h1> Novo Genêro </h1>
             <form>
                 <div className="form-group">
-                    <label for="name">Gênero</label>
-                    <input type="text" className="form-control" id="name" placeholder="Digite o nome do genêro"/>
+                    <label htmlFor="name">Gênero</label>
+                    <input type="text"  onChange={onChangeName} className="form-control" id="name" placeholder="Digite o nome do genêro"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Cadastrar</button>
+                <button type="button" className="btn btn-primary" onClick={save}>Cadastrar</button>
             </form>
         </div>
-    )
+    );
 }
-
-export default newGenres;
+export default NewGenres;
