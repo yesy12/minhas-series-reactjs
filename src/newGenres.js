@@ -23,7 +23,7 @@ const NewGenres = () => {
     }
 
     if( success) {
-        console.log(success)
+       return <Redirect to="/generos"/>
     }
 
     return (
@@ -32,7 +32,7 @@ const NewGenres = () => {
             <form>
                 <div className="form-group">
                     <label htmlFor="name">Gênero</label>
-                    <input type="text"  onChange={onChangeName} className="form-control" id="name" placeholder="Digite o nome do genêro"/>
+                    <input type="text" value={name}  onChange={onChangeName} className="form-control" id="name" placeholder="Digite o nome do genêro"/>
                 </div>
                 <button type="button" className="btn btn-primary" onClick={save}>Cadastrar</button>
             </form>
