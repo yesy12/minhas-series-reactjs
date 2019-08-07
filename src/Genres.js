@@ -28,7 +28,13 @@ const Genres = () =>{
             <tr key={record.id}>
                 <th scope="row"> {record.id}</th>
                 <td>{record.name}</td>
-                <td><button onClick={() => deleteGenres(record.id)}>-</button></td>
+                <td>
+                    <button className="btn btn-danger" onClick={() => deleteGenres(record.id)}> 
+                        Remover 
+                    </button>
+                    <Link to={"/generos/" + record.id} className="btn btn-warning"> Editar </Link>
+                    
+                </td>
             </tr>
         )
     }
@@ -38,7 +44,7 @@ const Genres = () =>{
             <div className='container'>
                 <h1> Genêros </h1>
                 <div>
-                    <Link to="/generos/novo">Novo Genêro</Link>
+                    <Link to="/generos/novo" className="btn btn-primary">Novo Genêro</Link>
                 </div>
                 <div className="alert alert-warning" role="alert">
                     Você não possui genêros criados
@@ -51,7 +57,7 @@ const Genres = () =>{
         <div className="container">
             <h1> Genêros </h1>
             <div>
-                <Link to="/generos/novo">Novo Genêro</Link>
+                <Link to="/generos/novo" className="btn btn-primary">Novo Genêro</Link>
             </div>
             <table className="table">
                 <thead>

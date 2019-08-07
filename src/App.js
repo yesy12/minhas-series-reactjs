@@ -2,6 +2,7 @@ import React,{ useState,useEffect } from 'react';
 import Header from './Header';
 import Genres from './Genres'
 import NewGenres from './NewGenres'
+import EditGenres from './EditGenres'
 import {
   BrowserRouter as Router, Route
 }from 'react-router-dom';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" exact component={Home}/>
         <Route path="/generos" exact component={Genres}/>
         <Route path="/generos/novo" exact component={NewGenres}/>
+        <Route path="/generos/:id" exact component={EditGenres}/>
         <pre>{JSON.stringify(data)}</pre>
       </div>
     </Router>
