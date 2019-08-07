@@ -14,7 +14,7 @@ const Home = () => {
 
 
 function App() {
-  const [data,setData] = useState({'teste':"teste"})
+  const [data,setData] = useState({})
   
   useEffect(() =>{
     

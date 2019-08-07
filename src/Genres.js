@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const Genres = () =>{
     const [data,setData] = useState([])
@@ -14,12 +15,20 @@ const Genres = () =>{
         })
     },[])
     
+    const deleteGenres = (id) =>{
+        axios.delete("/api/genres/" +id)
+        .then( (res) => {
+            const filter = data.filter(item => item.id !== id)
+            setData(filter)
+        })
+    }
+    
     const renderRow = (record) => {
         return (
             <tr key={record.id}>
                 <th scope="row"> {record.id}</th>
                 <td>{record.name}</td>
-                <td><button>+</button></td>
+                <td><button onClick={() => deleteGenres(record.id)}>-</button></td>
             </tr>
         )
     }
@@ -28,6 +37,9 @@ const Genres = () =>{
         return (
             <div className='container'>
                 <h1> Genêros </h1>
+                <div>
+                    <Link to="/generos/novo">Novo Genêro</Link>
+                </div>
                 <div className="alert alert-warning" role="alert">
                     Você não possui genêros criados
                 </div>
@@ -38,6 +50,9 @@ const Genres = () =>{
     return (
         <div className="container">
             <h1> Genêros </h1>
+            <div>
+                <Link to="/generos/novo">Novo Genêro</Link>
+            </div>
             <table className="table">
                 <thead>
                     <tr>
