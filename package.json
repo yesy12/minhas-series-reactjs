@@ -11,7 +11,7 @@
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.1",
     "teste": "git+https://github.com/yesy12/reactjs-devpleno.git",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "scripts": {
     "start": "react-scripts start",
